@@ -31,5 +31,6 @@ python /path/to/BMSP/bmsp_preprocess_d1namo.py
 ```
 Preprocessed ECG output: cleaned signal, stats, quality assessment, extracted epochs.    
 
-Preprocessed accelerometer output: cleaned signal, stats, extracted epochs.
+Preprocessed accelerometer output: cleaned signal, stats, extracted epochs.    
+
 ECG epochs are aligned with cleaned accelerometer signal and stats.
