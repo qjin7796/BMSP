@@ -1,0 +1,201 @@
+BASH=/bin/bash
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_LINENO=()
+BASH_REMATCH=([0]="P")
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="3" [1]="2" [2]="57" [3]="1" [4]="release" [5]="x86_64-apple-darwin23")
+BASH_VERSION='3.2.57(1)-release'
+COLUMNS=102
+DIRSTACK=()
+DISPLAY=/private/tmp/com.apple.launchd.J8iZSIAT09/org.xquartz:0
+EUID=501
+GROUPS=()
+HISTFILE=/Users/qjin/.bash_sessions/51B1E4BF-41A2-472C-8242-3A6AF4CF9C37.historynew
+HISTFILESIZE=500
+HISTSIZE=500
+HOME=/Users/qjin
+HOSTNAME=Qiuhans-MacBook-Pro.local
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+LC_CTYPE=UTF-8
+LINES=46
+LOGNAME=qjin
+LaunchInstanceID=A15318B4-2070-4509-95AB-D452756DD901
+MACHTYPE=x86_64-apple-darwin23
+MAILCHECK=60
+OLDPWD=/Users/qjin/Documents/GitHub
+OPTERR=1
+OPTIND=1
+OSTYPE=darwin23
+PATH=/Users/qjin/Documents/bmsp_env/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin
+PIPESTATUS=([0]="0")
+PPID=39519
+PROMPT_COMMAND=update_terminal_cwd
+PS1='(bmsp_env) \h:\W \u\$ '
+PS2='> '
+PS4='+ '
+PWD=/Users/qjin/Documents/GitHub/BMSP
+SECURITYSESSIONID=186a2
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
+SHELL_SESSION_DID_HISTORY_CHECK=1
+SHELL_SESSION_DID_INIT=1
+SHELL_SESSION_DIR=/Users/qjin/.bash_sessions
+SHELL_SESSION_FILE=/Users/qjin/.bash_sessions/51B1E4BF-41A2-472C-8242-3A6AF4CF9C37.session
+SHELL_SESSION_HISTFILE=/Users/qjin/.bash_sessions/51B1E4BF-41A2-472C-8242-3A6AF4CF9C37.history
+SHELL_SESSION_HISTFILE_NEW=/Users/qjin/.bash_sessions/51B1E4BF-41A2-472C-8242-3A6AF4CF9C37.historynew
+SHELL_SESSION_HISTFILE_SHARED=/Users/qjin/.bash_history
+SHELL_SESSION_HISTORY=1
+SHELL_SESSION_TIMESTAMP_FILE=/Users/qjin/.bash_sessions/_expiration_check_timestamp
+SHLVL=1
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Wa2Nz2Zb3R/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=453
+TERM_SESSION_ID=51B1E4BF-41A2-472C-8242-3A6AF4CF9C37
+TMPDIR=/var/folders/yn/yl0f7y7j3nn31bcj7m4w1xf40000gn/T/
+UID=501
+USER=qjin
+VIRTUAL_ENV=/Users/qjin/Documents/bmsp_env
+VIRTUAL_ENV_PROMPT='(bmsp_env) '
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+_=/Users/qjin/.bash-profile
+_OLD_VIRTUAL_PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin
+_OLD_VIRTUAL_PS1='\h:\W \u\$ '
+__CFBundleIdentifier=com.apple.Terminal
+deactivate () 
+{ 
+    if [ -n "${_OLD_VIRTUAL_PATH:-}" ]; then
+        PATH="${_OLD_VIRTUAL_PATH:-}";
+        export PATH;
+        unset _OLD_VIRTUAL_PATH;
+    fi;
+    if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ]; then
+        PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}";
+        export PYTHONHOME;
+        unset _OLD_VIRTUAL_PYTHONHOME;
+    fi;
+    hash -r 2> /dev/null;
+    if [ -n "${_OLD_VIRTUAL_PS1:-}" ]; then
+        PS1="${_OLD_VIRTUAL_PS1:-}";
+        export PS1;
+        unset _OLD_VIRTUAL_PS1;
+    fi;
+    unset VIRTUAL_ENV;
+    unset VIRTUAL_ENV_PROMPT;
+    if [ ! "${1:-}" = "nondestructive" ]; then
+        unset -f deactivate;
+    fi
+}
+shell_session_delete_expired () 
+{ 
+    if ( [ ! -e "$SHELL_SESSION_TIMESTAMP_FILE" ] || [ -z "$(/usr/bin/find "$SHELL_SESSION_TIMESTAMP_FILE" -mtime -1d)" ] ); then
+        local expiration_lock_file="$SHELL_SESSION_DIR/_expiration_lockfile";
+        if /usr/bin/shlock -f "$expiration_lock_file" -p $$; then
+            echo -n 'Deleting expired sessions...' 1>&2;
+            local delete_count=$(/usr/bin/find "$SHELL_SESSION_DIR" -type f -mtime +2w -print -delete | /usr/bin/wc -l);
+            [ "$delete_count" -gt 0 ] && echo $delete_count' completed.' 1>&2 || echo 'none found.' 1>&2;
+            ( umask 077;
+            /usr/bin/touch "$SHELL_SESSION_TIMESTAMP_FILE" );
+            /bin/rm "$expiration_lock_file";
+        fi;
+    fi
+}
+shell_session_history_allowed () 
+{ 
+    if [ -n "$HISTFILE" ]; then
+        local allowed=0;
+        if shopt -q histappend || [ -n "$HISTTIMEFORMAT" ]; then
+            allowed=${SHELL_SESSION_HISTORY:-0};
+        else
+            allowed=${SHELL_SESSION_HISTORY:=1};
+        fi;
+        if [ $allowed -eq 1 ]; then
+            return 0;
+        fi;
+    fi;
+    return 1
+}
+shell_session_history_check () 
+{ 
+    if [ ${SHELL_SESSION_DID_HISTORY_CHECK:-0} -eq 0 ]; then
+        SHELL_SESSION_DID_HISTORY_CHECK=1;
+        if shell_session_history_allowed; then
+            shell_session_history_enable;
+        fi;
+        if [ "$PROMPT_COMMAND" = "shell_session_history_check" ]; then
+            unset PROMPT_COMMAND;
+        else
+            if [[ $PROMPT_COMMAND =~ (.*)(; *shell_session_history_check *| *shell_session_history_check *; *)(.*) ]]; then
+                PROMPT_COMMAND="${BASH_REMATCH[1]}${BASH_REMATCH[3]}";
+            fi;
+        fi;
+    fi
+}
+shell_session_history_enable () 
+{ 
+    ( umask 077;
+    /usr/bin/touch "$SHELL_SESSION_HISTFILE_NEW" );
+    HISTFILE="$SHELL_SESSION_HISTFILE_NEW";
+    SHELL_SESSION_HISTORY=1
+}
+shell_session_save () 
+{ 
+    if [ -n "$SHELL_SESSION_FILE" ]; then
+        echo -ne '\nSaving session...' 1>&2;
+        ( umask 077;
+        echo 'echo Restored session: "$(/bin/date -r '$(/bin/date +%s)')"' >|"$SHELL_SESSION_FILE" );
+        declare -F shell_session_save_user_state > /dev/null && shell_session_save_user_state;
+        shell_session_history_allowed && shell_session_save_history;
+        echo 'completed.' 1>&2;
+    fi
+}
+shell_session_save_history () 
+{ 
+    shell_session_history_enable;
+    history -a;
+    if [ -f "$SHELL_SESSION_HISTFILE_SHARED" ] && [ ! -s "$SHELL_SESSION_HISTFILE" ]; then
+        echo -ne '\n...copying shared history...' 1>&2;
+        ( umask 077;
+        /bin/cp "$SHELL_SESSION_HISTFILE_SHARED" "$SHELL_SESSION_HISTFILE" );
+    fi;
+    echo -ne '\n...saving history...' 1>&2;
+    ( umask 077;
+    /bin/cat "$SHELL_SESSION_HISTFILE_NEW" >> "$SHELL_SESSION_HISTFILE_SHARED" );
+    ( umask 077;
+    /bin/cat "$SHELL_SESSION_HISTFILE_NEW" >> "$SHELL_SESSION_HISTFILE" );
+    : >|"$SHELL_SESSION_HISTFILE_NEW";
+    if [ -n "$HISTFILESIZE" ]; then
+        echo -n 'truncating history files...' 1>&2;
+        HISTFILE="$SHELL_SESSION_HISTFILE_SHARED";
+        HISTFILESIZE="$HISTFILESIZE";
+        HISTFILE="$SHELL_SESSION_HISTFILE";
+        HISTFILESIZE="$size";
+        HISTFILE="$SHELL_SESSION_HISTFILE_NEW";
+    fi;
+    echo -ne '\n...' 1>&2
+}
+shell_session_update () 
+{ 
+    shell_session_save && shell_session_delete_expired
+}
+update_terminal_cwd () 
+{ 
+    local url_path='';
+    { 
+        local i ch hexch LC_CTYPE=C LC_COLLATE=C LC_ALL= LANG=;
+        for ((i = 0; i < ${#PWD}; ++i))
+        do
+            ch="${PWD:i:1}";
+            if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
+                url_path+="$ch";
+            else
+                printf -v hexch "%02X" "'$ch";
+                url_path+="%${hexch: -2:2}";
+            fi;
+        done
+    };
+    printf '\e]7;%s\a' "file://$HOSTNAME$url_path"
+}
