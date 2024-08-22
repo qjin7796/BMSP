@@ -1,4 +1,4 @@
-from bmsp_preproc_utils import *
+from bmsp_preprocess_utils import *
 from neurokit2.stats import rescale
 from matplotlib.gridspec import GridSpec
 
