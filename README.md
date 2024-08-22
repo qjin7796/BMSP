@@ -1,5 +1,6 @@
-## Biomedical Signal Processing
-Biomedical signals: electrocardiogram (ECG), breathing signal, accelerometry signal, food intake picture
+## Biomedical Signal Processing 
+A pipeline for preprocessing biomedical signals (currently supporting electrocardiogram (ECG) and accelerometry signal).
+![alt text](demo/results/pipeline_overview.png)
 
 ## Installation
 ```
@@ -29,6 +30,8 @@ Configure and execute
 ```
 python /path/to/BMSP/bmsp_preprocess_d1namo.py
 ```
-Preprocessed ECG output: cleaned signal, stats, quality assessment, extracted epochs.
-Preprocessed accelerometer output: cleaned signal, stats, extracted epochs.
+Preprocessed ECG output: cleaned signal, stats, quality assessment, extracted epochs.    
+
+Preprocessed accelerometer output: cleaned signal, stats, extracted epochs.    
+
 ECG epochs are aligned with cleaned accelerometer signal and stats.
