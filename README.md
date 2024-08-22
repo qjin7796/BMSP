@@ -1,5 +1,6 @@
-## Biomedical Signal Processing
-Biomedical signals: electrocardiogram (ECG), breathing signal, accelerometry signal, food intake picture
+## Biomedical Signal Processing 
+A pipeline for preprocessing biomedical signals (currently supporting electrocardiogram (ECG) and accelerometry signal).
+![alt text](demo/results/pipeline_overview.png)
 
 ## Installation
 ```
