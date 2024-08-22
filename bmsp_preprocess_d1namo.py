@@ -97,77 +97,80 @@ if __name__ == '__main__':
         f'{subject_ecg_sample_time}_ecg_acc_alignment.pkl'
     )
 
-    # # Start preprocessing
-    # log_time = datetime.datetime.now()
-    # log_time_str = log_time.strftime('%Y%m%d_%H%M%S')
-    # preproc_log = os.path.join(output_dir, f'd1namo_preprocessing_log_{log_time_str}.txt')
-    # with open(preproc_log, 'w') as f:
-    #     f.write(f'Preprocessing log: {datetime.datetime.now()}\n\n')
-    # ## ECG
-    # if not os.path.exists(ecg_signal_file_path):
-    #     raise FileNotFoundError(f'{ecg_signal_file_path} does not exist!')
-    # else:
-    #     print(f'{datetime.datetime.now()}: '
-    #           f'Preprocessing ECG signal file: {ecg_signal_file_path}')
-    #     with open(preproc_log, 'a') as f:
-    #         f.write(f'\nPreprocessing ECG signal file: {ecg_signal_file_path}\n')
-    #     # Read and preprocess signal from the csv file
-    #     ecg_cleaned, ecg_clean_info, ecg_peaks_info = preproc_ecg(
-    #         file_path = ecg_signal_file_path, 
-    #         timestamp_colname = ecg_timestamp_colname,
-    #         ecg_colname = ecg_signal_colname,
-    #         outlier_exclude = 2, outlier_side = 'both',
-    #         denoise_method = 'neurokit', 
-    #         quality_threshold = 0.8,
-    #         group_epochs_window = 180,
-    #         log_file = preproc_log,
-    #         output_file = ecg_preproc_output_file_path
-    #     )
-    #     print(f'{datetime.datetime.now()}: ECG signal preprocessed '
-    #           f'and saved to {ecg_preproc_output_file_path}!')
-    # ## ACC
-    # if not os.path.exists(acc_signal_file_path):
-    #     raise FileNotFoundError(f'{acc_signal_file_path} does not exist!')
-    # else:
-    #     print(f'{datetime.datetime.now()}: '
-    #           f'Preprocessing accelerometer signal file: {acc_signal_file_path}')
-    #     with open(preproc_log, 'a') as f:
-    #         f.write(f'\nPreprocessing accelerometer signal file: {acc_signal_file_path}\n')
-    #     # Read and preprocess signal from the csv file
-    #     acc_cleaned, acc_clean_info, acc_epochs_info = preproc_acc(
-    #         file_path = acc_signal_file_path, 
-    #         timestamp_colname = acc_timestamp_colname,
-    #         signal_colname_list = acc_signal_colname_list,
-    #         target_rate = 250, lowcut = 0.5, highcut = 10.,
-    #         window_size = 5, window_overlap = 4,
-    #         log_file = preproc_log,
-    #         output_file = acc_preproc_output_file_path
-    #     )
-    #     print(f'{datetime.datetime.now()}: ACC signal preprocessed '
-    #           f'and saved to {acc_preproc_output_file_path}!')
-    # ## ECG - ACC alignment
-    # with open(preproc_log, 'a') as f:
-    #     f.write(f'\nAligning ECG and accelerometer signals...\n')
-    # ecg_acc_signal, ecg_acc_signal_info, ecg_acc_epochs_info = align_acc_to_ecg(
-    #     ecg_cleaned, ecg_clean_info, ecg_peaks_info, 
-    #     acc_cleaned, acc_clean_info, 
-    #     window_size = 4, log_file = preproc_log, 
-    #     output_file = ecg_acc_preproc_output_file_path
-    # )
-    # print(f'{datetime.datetime.now()}: ECG and accelerometer signals aligned '
-    #       f'and saved to {ecg_acc_preproc_output_file_path}!')
-    # print(f'{datetime.datetime.now()}: Preprocessing completed!')
-    # print(f'Time elapsed: {datetime.datetime.now() - log_time}')
-
-    with open(ecg_preproc_output_file_path, 'rb') as f:
-        ecg_data = pickle.load(f)
-    with open(acc_preproc_output_file_path, 'rb') as f:
-        acc_data = pickle.load(f)
-    print(f'{datetime.datetime.now()}: '
-          f'Aligning ECG and accelerometer signals...')
+    # Start preprocessing
+    log_time = datetime.datetime.now()
+    log_time_str = log_time.strftime('%Y%m%d_%H%M%S')
+    preproc_log = os.path.join(output_dir, f'd1namo_preprocessing_log_{log_time_str}.txt')
+    with open(preproc_log, 'w') as f:
+        f.write(f'Preprocessing log: {datetime.datetime.now()}\n\n')
+    ## ECG
+    if not os.path.exists(ecg_signal_file_path):
+        raise FileNotFoundError(f'{ecg_signal_file_path} does not exist!')
+    else:
+        print(f'{datetime.datetime.now()}: '
+              f'Preprocessing ECG signal file: {ecg_signal_file_path}')
+        with open(preproc_log, 'a') as f:
+            f.write(f'\nPreprocessing ECG signal file: {ecg_signal_file_path}\n')
+        # Read and preprocess signal from the csv file
+        ecg_cleaned, ecg_clean_info, ecg_peaks_info = preproc_ecg(
+            file_path = ecg_signal_file_path, 
+            timestamp_colname = ecg_timestamp_colname,
+            ecg_colname = ecg_signal_colname,
+            outlier_exclude = 2, outlier_side = 'both',
+            denoise_method = 'neurokit', 
+            quality_threshold = 0.8,
+            group_epochs_window = 180,
+            log_file = preproc_log,
+            output_file = ecg_preproc_output_file_path
+        )
+        print(f'{datetime.datetime.now()}: ECG signal preprocessed '
+              f'and saved to {ecg_preproc_output_file_path}!')
+    ## ACC
+    if not os.path.exists(acc_signal_file_path):
+        raise FileNotFoundError(f'{acc_signal_file_path} does not exist!')
+    else:
+        print(f'{datetime.datetime.now()}: '
+              f'Preprocessing accelerometer signal file: {acc_signal_file_path}')
+        with open(preproc_log, 'a') as f:
+            f.write(f'\nPreprocessing accelerometer signal file: {acc_signal_file_path}\n')
+        # Read and preprocess signal from the csv file
+        acc_cleaned, acc_clean_info, acc_epochs_info = preproc_acc(
+            file_path = acc_signal_file_path, 
+            timestamp_colname = acc_timestamp_colname,
+            signal_colname_list = acc_signal_colname_list,
+            target_rate = 250, lowcut = 0.5, highcut = 10.,
+            window_size = 5, window_overlap = 4,
+            log_file = preproc_log,
+            output_file = acc_preproc_output_file_path
+        )
+        print(f'{datetime.datetime.now()}: ACC signal preprocessed '
+              f'and saved to {acc_preproc_output_file_path}!')
+    ## ECG - ACC alignment
+    with open(preproc_log, 'a') as f:
+        f.write(f'\nAligning ECG and accelerometer signals...\n')
     ecg_acc_signal, ecg_acc_signal_info, ecg_acc_epochs_info = align_acc_to_ecg(
-        ecg_data['ecg_signal'], ecg_data['ecg_clean_info'], ecg_data['ecg_peaks_info'], 
-        acc_data['acc_signal'], acc_data['acc_clean_info'], 
-        window_size = 4, log_file = None, 
+        ecg_cleaned, ecg_clean_info, ecg_peaks_info, 
+        acc_cleaned, acc_clean_info, 
+        window_size = 4, log_file = preproc_log, 
         output_file = ecg_acc_preproc_output_file_path
     )
+    print(f'{datetime.datetime.now()}: ECG and accelerometer signals aligned '
+          f'and saved to {ecg_acc_preproc_output_file_path}!')
+    print(f'{datetime.datetime.now()}: Preprocessing completed!')
+    print(f'Time elapsed: {datetime.datetime.now() - log_time}')
+    with open(preproc_log, 'a') as f:
+        f.write(f'\nPreprocessing completed!\n')
+        f.write(f'Time elapsed: {datetime.datetime.now() - log_time}\n')
+
+    # with open(ecg_preproc_output_file_path, 'rb') as f:
+    #     ecg_data = pickle.load(f)
+    # with open(acc_preproc_output_file_path, 'rb') as f:
+    #     acc_data = pickle.load(f)
+    # print(f'{datetime.datetime.now()}: '
+    #       f'Aligning ECG and accelerometer signals...')
+    # ecg_acc_signal, ecg_acc_signal_info, ecg_acc_epochs_info = align_acc_to_ecg(
+    #     ecg_data['ecg_signal'], ecg_data['ecg_clean_info'], ecg_data['ecg_peaks_info'], 
+    #     acc_data['acc_signal'], acc_data['acc_clean_info'], 
+    #     window_size = 4, log_file = None, 
+    #     output_file = ecg_acc_preproc_output_file_path
+    # )

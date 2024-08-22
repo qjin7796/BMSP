@@ -612,6 +612,7 @@ def align_acc_to_ecg(ecg_signal: pd.Series, ecg_clean_info: dict, ecg_peaks_info
                     'Index', 'Length', 'ECG_R_Peaks', ..., 'Vertical_Mean', ...
                 } }.
     '''
+    time_0 = datetime.datetime.now()
     # Read ECG, ACC info
     ecg_start_time = ecg_clean_info['start_time']
     ecg_sampling_rate = ecg_clean_info['sampling_rate']
@@ -720,6 +721,7 @@ def align_acc_to_ecg(ecg_signal: pd.Series, ecg_clean_info: dict, ecg_peaks_info
             f.write(f'Signal columns: {aligned_signal.columns.to_list()}\n')
             f.write(f'{num_aligned_epochs} epochs extracted.\n')
             f.write(f'Epoch info dict keys: {list(aligned_epochs_info["ECG_QRS_Epochs"][1].keys())}\n')
+            f.write(f'Time elapsed: {(datetime.datetime.now() - time_0).total_seconds()} seconds.\n\n')
     # Save aligned signal and epochs info
     if output_file is not None:
         with open(output_file, 'wb') as f:
